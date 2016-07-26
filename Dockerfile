@@ -1,13 +1,17 @@
 FROM node:6.3-wheezy
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /var/www
+WORKDIR /var/www
 
-COPY package.json /usr/src/app/
+COPY package.json /var/www
 RUN npm install
 
-COPY . /usr/src/app
+COPY . /var/www
 
-EXPOSE 8080
+EXPOSE 8008
 
+ENV PORT=8008
+
+RUN [ "npm", "run", "build:dll" ]
 CMD [ "npm", "start" ]
+

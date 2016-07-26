@@ -1,0 +1,22 @@
+FROM node:6.3-wheezy
+
+VOLUME ["/var/www"]
+
+ADD start.sh /start.sh
+RUN chmod 755 /start.sh
+
+
+
+#RUN npm install
+#RUN npm run build:dll
+
+
+EXPOSE 8008
+
+
+ENV PORT=8008
+
+#CMD [ "npm", "start" ]
+CMD [ "/start.sh" ]
+
+
